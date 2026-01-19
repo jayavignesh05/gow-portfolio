@@ -1,74 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-
-const posts = [
-    {
-        title: "Finding Natural Light in Unexpected Places",
-        category: "Lighting",
-        image: "/images/blog_1.png"
-    },
-    {
-        title: "My Approach to Editing: Creating a Consistent Style",
-        category: "Editing",
-        image: "/images/blog_2.png"
-    },
-    {
-        title: "Pricing Your Photography: Strategies That Work",
-        category: "Business",
-        image: "/images/blog_3.png"
-    }
-];
+import { Camera, Lightbulb, Palette } from "lucide-react";
 
 export function Blog() {
+    const articles = [
+        {
+            title: "Mastering Natural Light",
+            excerpt: "Learn how to use natural light to create stunning, professional-quality photographs.",
+            icon: Lightbulb,
+            category: "Tips & Techniques"
+        },
+        {
+            title: "The Art of Composition",
+            excerpt: "Essential composition techniques that every photographer should know.",
+            icon: Camera,
+            category: "Photography Basics"
+        },
+        {
+            title: "Color Grading Essentials",
+            excerpt: "Transform your photos with professional color grading and editing techniques.",
+            icon: Palette,
+            category: "Post-Processing"
+        }
+    ];
+
     return (
-        <section id="blog" className="bg-white px-6 py-24 md:px-12 md:py-32">
-            <div className="mx-auto max-w-7xl">
-                <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-                    <div>
-                        <span className="mb-4 block text-sm font-medium uppercase tracking-widest text-neutral-400">
-                            05 — Blog
-                        </span>
-                        <h2 className="mb-4 text-4xl font-medium tracking-tight text-black md:text-6xl">
-                            Behind the lens
-                        </h2>
-                        <p className="max-w-md text-lg text-neutral-500">
-                            Thoughts, insights, and stories from my photography journey. Take a peek into my creative process and recent projects.
-                        </p>
-                    </div>
+        <section className="relative w-full bg-white px-6 py-20 md:py-32">
+            <div className="mx-auto max-w-6xl">
+                <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-16 text-center text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl"
+                >
+                    Behind the lens
+                </motion.h2>
 
-                    <a href="#" className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105 active:scale-95">
-                        View all posts
-                    </a>
-                </div>
-
-                <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-                    {posts.map((post, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="group cursor-pointer"
-                        >
-                            <div className="relative mb-6 aspect-[4/3] overflow-hidden rounded-2xl bg-[#F2F4F7]">
-                                <Image
-                                    src={post.image}
-                                    alt={post.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                                />
-                                <div className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-black backdrop-blur-sm">
-                                    {post.category}
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {articles.map((article, index) => {
+                        const Icon = article.icon;
+                        return (
+                            <motion.article
+                                key={article.title}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+                                whileHover={{ scale: 1.05 }}
+                                className="group cursor-pointer rounded-2xl border border-gray-200 p-8 transition-all hover:border-black hover:shadow-xl"
+                            >
+                                {/* Icon */}
+                                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-black text-white transition-transform group-hover:scale-110">
+                                    <Icon className="h-8 w-8" />
                                 </div>
-                            </div>
-                            <h3 className="mb-2 text-xl font-medium leading-tight text-black transition-colors group-hover:text-neutral-600">
-                                {post.title}
-                            </h3>
-                        </motion.div>
-                    ))}
+
+                                {/* Category */}
+                                <p className="mb-2 text-xs uppercase tracking-wider text-gray-500">
+                                    {article.category}
+                                </p>
+
+                                {/* Title */}
+                                <h3 className="mb-3 text-2xl font-semibold tracking-tight">
+                                    {article.title}
+                                </h3>
+
+                                {/* Excerpt */}
+                                <p className="leading-relaxed text-gray-600">
+                                    {article.excerpt}
+                                </p>
+                            </motion.article>
+                        );
+                    })}
                 </div>
             </div>
         </section>

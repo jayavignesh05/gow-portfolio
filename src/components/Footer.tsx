@@ -1,66 +1,100 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Mail, Phone, Instagram, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="relative bg-black py-24 text-white overflow-hidden md:py-32">
-            <div className="mx-auto max-w-screen-xl px-6 md:px-12">
-
-                {/* Main CTA */}
-                <div className="flex flex-col gap-16 md:flex-row md:justify-between md:items-end mb-32">
-                    <div className="max-w-2xl">
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="text-6xl font-bold tracking-tighter md:text-8xl lg:text-9xl mb-8"
-                        >
-                            Let&apos;s work<br />together.
-                        </motion.h2>
-                        <p className="text-xl text-neutral-400">
-                            Available for freelance projects and collaborations worldwide.
-                        </p>
-                    </div>
-
-                    <div>
-                        <a
-                            href="mailto:hello@example.com"
-                            className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-lg font-medium transition-colors hover:bg-white hover:text-black"
-                        >
-                            Get in touch
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
-                                <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
+        <footer className="blue-vignette relative w-full bg-black text-white">
+            {/* Main Footer Content */}
+            <div className="relative">
+                {/* Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/images/footer-august.png"
+                        alt="Get in touch"
+                        fill
+                        className="object-cover opacity-40"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
                 </div>
 
-                {/* Footer Links */}
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-4 border-t border-white/10 pt-16">
-                    <div className="col-span-2 md:col-span-1">
-                        <span className="block mb-6 text-xs font-semibold uppercase tracking-widest text-neutral-500">Socials</span>
-                        <div className="flex flex-col gap-4">
-                            <a href="#" className="text-neutral-300 hover:text-white transition-colors">Instagram</a>
-                            <a href="#" className="text-neutral-300 hover:text-white transition-colors">Twitter</a>
-                            <a href="#" className="text-neutral-300 hover:text-white transition-colors">LinkedIn</a>
-                        </div>
-                    </div>
+                {/* Content */}
+                <div className="relative z-10 px-6 py-32 md:py-48">
+                    <div className="mx-auto max-w-4xl text-center">
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <h2 className="mb-6 text-5xl font-semibold tracking-tight md:text-6xl lg:text-7xl">
+                                Get in touch
+                            </h2>
+                            <p className="mb-12 text-lg text-white/70 md:text-xl">
+                                Ready to create something beautiful together? Let's talk about your next project.
+                            </p>
 
-                    <div className="col-span-1">
-                        <span className="block mb-6 text-xs font-semibold uppercase tracking-widest text-neutral-500">Pages</span>
-                        <div className="flex flex-col gap-4">
-                            <a href="/" className="text-neutral-300 hover:text-white transition-colors">Home</a>
-                            <a href="#portfolio" className="text-neutral-300 hover:text-white transition-colors">Work</a>
-                            <a href="#about" className="text-neutral-300 hover:text-white transition-colors">About</a>
-                        </div>
-                    </div>
+                            {/* Contact Info */}
+                            <div className="mb-12 flex flex-wrap items-center justify-center gap-8">
+                                <a
+                                    href="mailto:hello@augustrenner.com"
+                                    className="flex items-center gap-2 text-white/90 transition-colors hover:text-white"
+                                >
+                                    <Mail className="h-5 w-5" />
+                                    <span>hello@augustrenner.com</span>
+                                </a>
+                                <div className="h-4 w-px bg-white/30" />
+                                <a
+                                    href="tel:+1234567890"
+                                    className="flex items-center gap-2 text-white/90 transition-colors hover:text-white"
+                                >
+                                    <Phone className="h-5 w-5" />
+                                    <span>+1 (234) 567-890</span>
+                                </a>
+                            </div>
 
-                    <div className="col-span-2 md:col-span-2 flex flex-col justify-between items-start md:items-end">
-                        <p className="text-sm text-neutral-600">
-                            &copy; {new Date().getFullYear()} Aperture Template. All rights reserved.
-                        </p>
+                            {/* Social Links */}
+                            <div className="mb-12 flex items-center justify-center gap-6">
+                                <a
+                                    href="#"
+                                    className="transition-transform hover:scale-110"
+                                    aria-label="Instagram"
+                                >
+                                    <Instagram className="h-6 w-6" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="transition-transform hover:scale-110"
+                                    aria-label="Twitter"
+                                >
+                                    <Twitter className="h-6 w-6" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="transition-transform hover:scale-110"
+                                    aria-label="LinkedIn"
+                                >
+                                    <Linkedin className="h-6 w-6" />
+                                </a>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="relative border-t border-white/10 px-6 py-8">
+                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-white/60 md:flex-row">
+                    <p>© 2026 August Renner. All rights reserved.</p>
+                    <div className="flex gap-8">
+                        <a href="#" className="transition-colors hover:text-white">
+                            Privacy Policy
+                        </a>
+                        <a href="#" className="transition-colors hover:text-white">
+                            Terms of Service
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,27 +1,27 @@
-import { Navbar } from "@/components/Navbar";
 import { FloatingNav } from "@/components/FloatingNav";
 import { Hero } from "@/components/Hero";
-import { Philosophy } from "@/components/Philosophy";
 import { Clients } from "@/components/Clients";
-import { Gallery } from "@/components/Gallery";
+import { Philosophy } from "@/components/Philosophy";
 import { Services } from "@/components/Services";
+import Benefits from "@/components/Benefits";
+import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
 import { Blog } from "@/components/Blog";
-import { ContactCTA } from "@/components/ContactCTA";
+import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen w-full bg-white text-black selection:bg-purple-200">
-      <Navbar />
+    <main className="min-h-screen w-full bg-white text-black">
       <Hero />
       <Clients />
       <Philosophy />
-      <Gallery />
       <Services />
+      <Benefits />
+      <Gallery />
       <Testimonials />
       <Blog />
-      <ContactCTA />
+      <FAQ />
       <Footer />
       <FloatingNav />
     </main>

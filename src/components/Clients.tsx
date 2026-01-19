@@ -1,34 +1,70 @@
 "use client";
 
 import { motion } from "framer-motion";
-
-const clients = [
-    "Prisma Design", "Altura Apparel", "Meridian Tech", "Style Quarterly", "Vogue", "Vanity Fair", "Real Estate Dev", "Jewelry Design"
-];
+import Image from "next/image";
+import { Star } from "lucide-react";
 
 export function Clients() {
     return (
-        <section className="bg-white py-32 md:py-48 text-black">
-            <div className="mx-auto max-w-7xl px-6 md:px-12">
-                <p className="mb-16 text-center text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
-                    Trusted by market leaders
-                </p>
+        <section className="relative w-full bg-white px-6 py-20 md:py-32">
+            <div className="mx-auto max-w-6xl">
+                {/* Main heading */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-center"
+                >
+                    <h2 className="mb-6 text-3xl font-semibold tracking-tight md:text-4xl lg:text-5xl">
+                        Trusted by brands & creatives worldwide
+                    </h2>
 
-                <div className="grid grid-cols-2 gap-12 sm:gap-16 md:grid-cols-4 md:gap-24 lg:gap-32">
-                    {clients.map((client, i) => (
-                        <motion.div
-                            key={client}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: i * 0.1 }}
-                            viewport={{ once: true }}
-                            className="flex items-center justify-center opacity-40 transition-all duration-500 hover:opacity-100 hover:scale-105"
-                        >
-                            {/* Placeholder Logotype - In real app, use SVGs */}
-                            <span className="text-xl font-bold tracking-tight text-neutral-900 md:text-2xl">{client}</span>
-                        </motion.div>
-                    ))}
-                </div>
+                    {/* Laurel wreaths - decorative */}
+                    <div className="mb-8 flex items-center justify-center gap-4">
+                        <div className="text-2xl">🏆</div>
+                        <div className="flex gap-1">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="h-5 w-5 fill-black text-black" />
+                            ))}
+                        </div>
+                        <div className="text-2xl">🏆</div>
+                    </div>
+
+                    {/* Stats */}
+                    <div className="mb-8 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                            <Star className="h-4 w-4 fill-black text-black" />
+                            <span className="font-medium">5.0 rating</span>
+                        </div>
+                        <div className="h-4 w-px bg-gray-300" />
+                        <div>
+                            <span className="font-medium">500+ satisfied clients</span>
+                        </div>
+                        <div className="h-4 w-px bg-gray-300" />
+                        <div>
+                            <span className="font-medium">2000+ projects completed</span>
+                        </div>
+                    </div>
+
+                    {/* Avatar group */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+                        className="flex justify-center"
+                    >
+                        <div className="relative h-16 w-64">
+                            <Image
+                                src="/images/avatars-group.png"
+                                alt="Satisfied clients"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
