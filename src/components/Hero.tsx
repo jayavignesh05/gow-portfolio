@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { Header } from "@/components/Header";
 
 export function Hero() {
   return (
@@ -31,52 +32,8 @@ export function Hero() {
       {/* ========================================= */}
 
       {/* HEADER: Left Text, Center Icon, Right Button */}
-      <header className="absolute top-0 left-0 right-0 z-30 flex justify-between items-center w-full p-6 md:p-10">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
-        >
-          <h1 className="text-lg md:text-xl font-bold leading-tight tracking-tight">
-            August Renner
-          </h1>
-          <p className="text-xs md:text-sm text-white/80 font-medium">
-            Photographer
-          </p>
-        </motion.div>
-
-        {/* Center Icon */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
-          className="absolute left-1/2 -translate-x-1/2"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="opacity-80"
-          >
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path>
-          </svg>
-        </motion.div>
-
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 2.6, ease: "easeOut" }}
-          className="bg-white text-teal-900 px-6 py-2.5 rounded-full text-sm font-semibold shadow-sm hover:bg-teal-50 transition-colors"
-        >
-          Contact
-        </motion.button>
-      </header>
+      {/* HEADER: Shared Component */}
+      <Header theme="light" />
 
       {/* BACKGROUND TEXT & CORNER BRACKETS */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full">
@@ -135,7 +92,7 @@ export function Hero() {
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 2.0 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[45vw] max-w-[650px] h-[80vh] z-20 pointer-events-none"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full md:w-[45vw] max-w-[650px] h-[70vh] md:h-[80vh] z-20 pointer-events-none"
       >
         <div className="relative w-full h-full">
           {/* Replace this src with a transparent PNG of the model, 

@@ -44,9 +44,17 @@ export function Portfolio() {
       <div className="container mx-auto px-4 md:px-8">
         {/* Header Section - Centered */}
         <div className="mb-16 md:mb-24 flex flex-col items-center text-center max-w-3xl mx-auto">
-          <span className="mb-6 inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-medium text-neutral-900 shadow-sm">
-            Portfolio
-          </span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="inline-block mb-6"
+          >
+            <span className="px-5 py-2 bg-[#F2F4F7] text-gray-800 text-sm font-semibold rounded-full tracking-wide">
+              Portfolio
+            </span>
+          </motion.div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-neutral-900 font-sans mb-6">
             A look through my lens
           </h2>
@@ -60,8 +68,8 @@ export function Portfolio() {
         {/* Standard Grid Layout */}
         <div className="relative">
           {/* Row 1 - Sticky */}
-          <div className="sticky top-24 z-0 mb-12 md:mb-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 lg:gap-8 px-12">
+          <div className="relative md:sticky top-0 md:top-20 z-0 mb-12 md:mb-0">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
               {projects.slice(0, 2).map((project, index) => (
                 <motion.div
                   key={index}
@@ -78,7 +86,7 @@ export function Portfolio() {
 
           {/* Row 2 - Overlay */}
           <div className="relative z-10 bg-neutral-50">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8 lg:gap-8 px-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
               {projects.slice(2, 4).map((project, index) => (
                 <motion.div
                   key={index + 2}
@@ -107,9 +115,9 @@ interface CardProps {
 
 const Card = ({ title, date, category, image }: CardProps) => {
   return (
-    <div className="group relative h-[500px] w-full flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md md:h-[600px]">
+    <div className="group relative h-[300px] flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md md:h-[500px] mx-auto">
       {/* Image Container */}
-      <div className="relative h-[80%] w-full overflow-hidden rounded-xl bg-neutral-100">
+      <div className="relative h-[80%]  overflow-hidden rounded-xl bg-neutral-100">
         <Image
           src={image}
           alt={title}
