@@ -18,7 +18,7 @@ export function Hero() {
   // 3. Create smooth transformations based on scroll progress
   // Background moves down slightly slower than the scroll
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  
+
   // Text scales up massively, moves down, and fades out
   const textScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
@@ -44,6 +44,7 @@ export function Hero() {
           fill
           className="object-cover"
           priority
+          sizes="100vw"
         />
       </motion.div>
       <motion.div
@@ -56,6 +57,7 @@ export function Hero() {
           fill
           className="object-cover opacity-80"
           priority
+          sizes="100vw"
         />
       </motion.div>
 
@@ -90,15 +92,15 @@ export function Hero() {
         </motion.div>
       </div>
 
-     {/* PORTRAIT IMAGE */}
+      {/* PORTRAIT IMAGE */}
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-        style={{ 
+        style={{
           scale: portraitScale,
           y: portraitY,
-          transformOrigin: "bottom center" 
+          transformOrigin: "bottom center",
         }}
         /* CHANGES MADE: 
            1. Changed 'bottom-0' to negative values like '-bottom-[8vh] md:-bottom-[12vh]' to pull the image down.
@@ -111,7 +113,7 @@ export function Hero() {
             src="/images/heromain.avif"
             alt="Portrait"
             fill
-            className="object-contain object-bottom" 
+            className="object-contain object-bottom"
             style={{
               /* CHANGES MADE:
                  Adjusted the mask so the fade starts earlier (65%) and goes fully transparent by 95%.
@@ -123,6 +125,7 @@ export function Hero() {
                 "linear-gradient(to bottom, black 65%, transparent 95%)",
             }}
             priority
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </motion.div>
