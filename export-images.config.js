@@ -4,7 +4,7 @@
 const config = {
   imageFolderPath: 'public',
   exportFolderPath: 'out',
-  quality: 75,
+  quality: 85,
   storePicturesInWEBP: true,
   exportFolderName: 'nextImageExportOptimizer',
   generateAndUseBlurImages: true,
