@@ -16,8 +16,8 @@ export default function myImageLoader({
     return src;
   }
 
-  return `/${
+  const folder =
     process.env.nextImageExportOptimizer_exportFolderName ||
-    "nextImageExportOptimizer"
-  }/${src}/${width}/${quality || 75}`;
+    "nextImageExportOptimizer";
+  return `/${folder}${src.startsWith("/") ? "" : "/"}${src}/${width}/${quality || 75}`;
 }
