@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react";
 
 import { Header } from "@/components/Header";
 import { FloatingNav } from "@/components/FloatingNav";
+import { AnimatedTitle } from "@/components/AnimatedTitle";
 
 export function generateStaticParams() {
   return projects.map((project) => ({
@@ -76,9 +77,7 @@ export default async function ProjectPage({
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-tighter leading-[0.9] mt-2">
-              {project.title}
-            </h1>
+            <AnimatedTitle title={project.title} />
 
             <p className="text-lg md:text-2xl text-white/80 max-w-2xl leading-relaxed font-light">
               {project.description}
