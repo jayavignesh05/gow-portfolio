@@ -2,41 +2,9 @@
 
 import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
-
-const projects = [
-  {
-    title: "Wild Bloom",
-    category: "Fashion & Editorial",
-    date: "2024",
-    image: "/images/portfolio-fashion.png",
-    description:
-      "A deep dive into avant-garde fashion photography in natural settings.",
-  },
-  {
-    title: "Soft Metals",
-    category: "Brand & Commercial",
-    date: "2024",
-    image: "/images/portfolio-editorial.png",
-    description:
-      "Commercial campaign focusing on metallic textures and soft lighting.",
-  },
-  {
-    title: "Electric Nights",
-    category: "Concert & Live Music",
-    date: "2023",
-    image: "/images/portfolio-concert.png",
-    description:
-      "Capturing the raw energy of live performances and backstage moments.",
-  },
-  {
-    title: "Urban Stories",
-    category: "Fashion & Editorial",
-    date: "2023",
-    image: "/images/portfolio-fashion.png",
-    description: "Street style photography documenting the pulse of the city.",
-  },
-];
+import { projects } from "@/data/projects";
 
 export function Portfolio() {
   return (
@@ -72,13 +40,18 @@ export function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
               {projects.slice(0, 2).map((project, index) => (
                 <motion.div
-                  key={index}
+                  key={project.id}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card {...project} />
+                  <Link
+                    href={`/project/${project.id}`}
+                    className="block h-full"
+                  >
+                    <Card {...project} />
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -89,13 +62,18 @@ export function Portfolio() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
               {projects.slice(2, 4).map((project, index) => (
                 <motion.div
-                  key={index + 2}
+                  key={project.id}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <Card {...project} />
+                  <Link
+                    href={`/project/${project.id}`}
+                    className="block h-full"
+                  >
+                    <Card {...project} />
+                  </Link>
                 </motion.div>
               ))}
             </div>

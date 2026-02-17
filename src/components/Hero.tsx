@@ -29,12 +29,15 @@ export function Hero() {
   const portraitY = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
 
   return (
-    <section 
-      ref={containerRef} 
+    <section
+      ref={containerRef}
       className="relative h-screen w-full overflow-hidden flex flex-col justify-between text-white bg-teal-600"
     >
       {/* BACKGROUND LAYERS with Parallax */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 w-full h-full">
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 z-0 w-full h-full"
+      >
         <Image
           src="/images/herobg.avif"
           alt="Background"
@@ -43,7 +46,10 @@ export function Hero() {
           priority
         />
       </motion.div>
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-[5] w-full h-full">
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 z-[5] w-full h-full"
+      >
         <Image
           src="/images/herocloud.avif"
           alt="Clouds"
@@ -65,10 +71,10 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          style={{ 
-            scale: textScale, 
-            y: textY, 
-            opacity: textOpacity 
+          style={{
+            scale: textScale,
+            y: textY,
+            opacity: textOpacity,
           }}
           className="relative inline-flex items-center justify-center px-6 py-4 md:px-8 md:py-4 origin-center"
         >
@@ -84,30 +90,37 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* PORTRAIT IMAGE */}
+     {/* PORTRAIT IMAGE */}
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-        // Apply scroll transforms here
         style={{ 
           scale: portraitScale,
           y: portraitY,
-          transformOrigin: "bottom center" // Ensures it scales from the bottom up
+          transformOrigin: "bottom center" 
         }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[100vw] sm:w-[70vw] md:w-[35vw] max-w-[500px] h-[65vh] md:h-[70vh] z-20 pointer-events-none"
+        /* CHANGES MADE: 
+           1. Changed 'bottom-0' to negative values like '-bottom-[8vh] md:-bottom-[12vh]' to pull the image down.
+           2. Slightly increased the width (w-[100vw], etc.) and height to compensate for pulling it down, so the face is still clearly visible.
+        */
+        className="absolute -bottom-[15vh] md:-bottom-[20vh] left-1/2 -translate-x-1/2 w-[100vw] sm:w-[70vw] md:w-[60vw] lg:w-[45vw] h-[75vh] md:h-[95vh] z-20 pointer-events-none"
       >
         <div className="relative w-full h-full">
           <Image
             src="/images/heromain.avif"
             alt="Portrait"
             fill
-            className="object-cover object-top"
+            className="object-contain object-bottom" 
             style={{
+              /* CHANGES MADE:
+                 Adjusted the mask so the fade starts earlier (65%) and goes fully transparent by 95%.
+                 This perfectly blends the cut edge into the background.
+              */
               maskImage:
-                "linear-gradient(to bottom, black 65%, transparent 100%)",
+                "linear-gradient(to bottom, black 65%, transparent 95%)",
               WebkitMaskImage:
-                "linear-gradient(to bottom, black 65%, transparent 100%)",
+                "linear-gradient(to bottom, black 65%, transparent 95%)",
             }}
             priority
           />
