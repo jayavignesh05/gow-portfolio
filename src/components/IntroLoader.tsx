@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 // Placeholder images for the 5 intro frames
 const introImages = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&q=80",
-  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80",
-  "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&q=80",
-  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500&q=80",
+  "/images/intro/i1.jpg",
+  "/images/intro/i2.jpg",
+  "/images/intro/i3.jpeg",
+  "/images/intro/i4.jpeg",
+  "/images/intro/i5.jpeg",
 ];
 
 interface IntroLoaderProps {
@@ -19,7 +19,7 @@ interface IntroLoaderProps {
 
 export function IntroLoader({ onComplete }: IntroLoaderProps) {
   useEffect(() => {
-    // Lock scroll on mount
+    // Lock scroll on
     document.body.style.overflow = "hidden";
 
     // Unlock scroll on unmount (or when component is removed)
