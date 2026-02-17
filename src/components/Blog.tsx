@@ -69,7 +69,7 @@ export function Blog() {
                   delay: index * 0.1,
                 }}
                 whileHover={{ scale: 1.05 }}
-                className="group cursor-pointer rounded-2xl border border-gray-200 p-8 transition-all hover:border-black hover:shadow-xl"
+                className="group rounded-2xl border border-gray-200 p-8 transition-all hover:border-black hover:shadow-xl"
               >
                 {/* Icon */}
                 <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-black text-white transition-transform group-hover:scale-110">

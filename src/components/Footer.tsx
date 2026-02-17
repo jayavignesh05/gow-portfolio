@@ -12,10 +12,10 @@ export function Footer() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/footer-august.png"
+            src="/images/footer-gow.jpeg"
             alt="Get in touch"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-80"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
         </div>

@@ -72,7 +72,7 @@ export function Services() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex flex-col sm:flex-row gap-6 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 group cursor-pointer"
+              className="flex flex-col sm:flex-row gap-6 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 group "
             >
               {/* Project Image */}
               <div className="w-full sm:w-48 h-48 sm:h-32 rounded-xl flex-shrink-0 overflow-hidden relative group-hover:scale-95 transition-transform duration-300">
