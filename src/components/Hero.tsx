@@ -1,14 +1,40 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { Header } from "@/components/Header";
 
 export function Hero() {
+  // 1. Create a reference to the hero section to track scroll
+  const containerRef = useRef(null);
+
+  // 2. Track the scroll progress of this specific section
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"], // Maps 0 to 1 as you scroll past the hero
+  });
+
+  // 3. Create smooth transformations based on scroll progress
+  // Background moves down slightly slower than the scroll
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+  
+  // Text scales up massively, moves down, and fades out
+  const textScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  // Portrait scales up slightly and moves up slightly for depth
+  const portraitScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
+
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col justify-between text-white">
-      {/* BACKGROUND LAYERS */}
-      <div className="absolute inset-0 z-0">
+    <section 
+      ref={containerRef} 
+      className="relative h-screen w-full overflow-hidden flex flex-col justify-between text-white bg-teal-600"
+    >
+      {/* BACKGROUND LAYERS with Parallax */}
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 w-full h-full">
         <Image
           src="/images/herobg.avif"
           alt="Background"
@@ -16,8 +42,8 @@ export function Hero() {
           className="object-cover"
           priority
         />
-      </div>
-      <div className="absolute inset-0 z-5">
+      </motion.div>
+      <motion.div style={{ y: bgY }} className="absolute inset-0 z-[5] w-full h-full">
         <Image
           src="/images/herocloud.avif"
           alt="Clouds"
@@ -25,64 +51,35 @@ export function Hero() {
           className="object-cover opacity-80"
           priority
         />
+      </motion.div>
+
+      {/* HEADER */}
+      <div className="relative z-50">
+        <Header theme="light" />
       </div>
 
-      {/* ========================================= */}
-      {/* EXACT MAIN PAGE CONTENT (Matches your image) */}
-      {/* ========================================= */}
-
-      {/* HEADER: Left Text, Center Icon, Right Button */}
-      {/* HEADER: Shared Component */}
-      <Header theme="light" />
-
       {/* BACKGROUND TEXT & CORNER BRACKETS */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 w-full">
+      <div className="absolute inset-0 flex items-start pt-[22vh] md:pt-0 md:items-center justify-center pointer-events-none z-10 w-full h-full md:pb-[40vh]">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 2.2 }}
-          className="relative inline-flex items-center justify-center p-4 md:p-8"
+          // Keep the initial load animation, but add the scroll transforms to the style prop
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          style={{ 
+            scale: textScale, 
+            y: textY, 
+            opacity: textOpacity 
+          }}
+          className="relative inline-flex items-center justify-center px-6 py-4 md:px-8 md:py-4 origin-center"
         >
-          {/* Brackets framing the text */}
-          <svg
-            className="absolute top-0 left-0 w-6 h-6 md:w-8 md:h-8 text-white/50"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M6 3H3v3" />
-          </svg>
-          <svg
-            className="absolute top-0 right-0 w-6 h-6 md:w-8 md:h-8 text-white/50"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M18 3h3v3" />
-          </svg>
-          <svg
-            className="absolute bottom-0 left-0 w-6 h-6 md:w-8 md:h-8 text-white/50"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M6 21H3v-3" />
-          </svg>
-          <svg
-            className="absolute bottom-0 right-0 w-6 h-6 md:w-8 md:h-8 text-white/50"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <path d="M18 21h3v-3" />
-          </svg>
+          {/* Brackets */}
+          <div className="absolute top-0 left-0 w-5 h-5 md:w-6 md:h-6 border-t-2 border-l-2 border-white/80" />
+          <div className="absolute top-0 right-0 w-5 h-5 md:w-6 md:h-6 border-t-2 border-r-2 border-white/80" />
+          <div className="absolute bottom-0 left-0 w-5 h-5 md:w-6 md:h-6 border-b-2 border-l-2 border-white/80" />
+          <div className="absolute bottom-0 right-0 w-5 h-5 md:w-6 md:h-6 border-b-2 border-r-2 border-white/80" />
 
-          <h1 className="text-[22vw] font-bold tracking-tighter text-[#E0F2F1] leading-none select-none">
-            AUGUST
+          <h1 className="text-[15vw] md:text-[12vw] font-bold tracking-[-0.06em] leading-none text-white select-none text-center uppercase">
+            Gowtham
           </h1>
         </motion.div>
       </div>
@@ -91,25 +88,28 @@ export function Hero() {
       <motion.div
         initial={{ y: "100%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 2.0 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full md:w-[45vw] max-w-[650px] h-[70vh] md:h-[80vh] z-20 pointer-events-none"
+        transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+        // Apply scroll transforms here
+        style={{ 
+          scale: portraitScale,
+          y: portraitY,
+          transformOrigin: "bottom center" // Ensures it scales from the bottom up
+        }}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[100vw] sm:w-[70vw] md:w-[35vw] max-w-[500px] h-[65vh] md:h-[70vh] z-20 pointer-events-none"
       >
         <div className="relative w-full h-full">
-          {/* Replace this src with a transparent PNG of the model, 
-            or keep this Unsplash image to see the gradient mask effect! 
-          */}
           <Image
             src="/images/heromain.avif"
             alt="Portrait"
             fill
             className="object-cover object-top"
             style={{
-              // This creates the white fade effect at the bottom!
               maskImage:
-                "linear-gradient(to bottom, black 60%, transparent 100%)",
+                "linear-gradient(to bottom, black 65%, transparent 100%)",
               WebkitMaskImage:
-                "linear-gradient(to bottom, black 60%, transparent 100%)",
+                "linear-gradient(to bottom, black 65%, transparent 100%)",
             }}
+            priority
           />
         </div>
       </motion.div>

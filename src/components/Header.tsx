@@ -39,7 +39,7 @@ export function Header({ theme = "light", className }: HeaderProps) {
               textColor,
             )}
           >
-            August Renner
+            Gowtham
           </h1>
           <p className={cn("text-xs md:text-sm font-medium", subTextColor)}>
             Photographer
