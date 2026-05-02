@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Aperture } from "lucide-react";
 
 // Placeholder images for the 5 intro frames
 const introImages = [
@@ -51,19 +52,7 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
         }}
         className="absolute z-10 text-black mb-10"
       >
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path>
-        </svg>
+        <Aperture size={40} />
       </motion.div>
 
       {introImages.map((src, i) => {
@@ -129,7 +118,7 @@ export function IntroLoader({ onComplete }: IntroLoaderProps) {
             style={{ zIndex: 10 + i }}
           >
             <div className="relative w-full h-[85%] bg-gray-200 overflow-hidden">
-              <Image src={src} alt="intro" fill className="object-cover" />
+              <Image src={src} alt="intro" fill sizes="160px" priority className="object-cover" />
             </div>
           </motion.div>
         );

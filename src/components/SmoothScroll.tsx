@@ -27,5 +27,5 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
         };
     }, []);
 
-    return <>{children}</>;
+    return <div className="relative w-full">{children}</div>;
 }

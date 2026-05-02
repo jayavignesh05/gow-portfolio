@@ -67,10 +67,9 @@ export function Testimonials() {
                             {/* Author */}
                             <div className="flex items-center gap-4">
                                 <div className="relative h-12 w-12 overflow-hidden rounded-full">
-                                    <Image
-                                        src={testimonial.avatar}
+                                    <Image src={testimonial.avatar}
                                         alt={testimonial.name}
-                                        fill
+                                        fill sizes="100vw"
                                         className="object-cover"
                                     />
                                 </div>

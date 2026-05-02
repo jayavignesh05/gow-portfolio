@@ -67,10 +67,9 @@ export function Gallery() {
             >
               {/* Image Container */}
               <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
-                <Image
-                  src={project.image}
+                <Image src={project.image}
                   alt={project.title}
-                  fill
+                  fill sizes="100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

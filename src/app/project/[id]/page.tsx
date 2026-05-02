@@ -44,10 +44,9 @@ export default async function ProjectPage({
       <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24 px-6 md:px-12 text-white">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 select-none">
-          <Image
-            src={project.image}
+          <Image src={project.image}
             alt={project.title}
-            fill
+            fill sizes="100vw"
             className="object-cover"
             priority
           />
@@ -101,10 +100,9 @@ export default async function ProjectPage({
                   index % 3 === 0 ? "aspect-[4/3]" : "aspect-[3/4]"
                 } ${index % 3 === 0 ? "md:col-span-2" : "md:col-span-1"}`}
               >
-                <Image
-                  src={img}
+                <Image src={img}
                   alt={`${project.title} - Image ${index + 1}`}
-                  fill
+                  fill sizes="100vw"
                   className="object-cover hover:scale-105 transition-transform duration-700"
                   priority={index < 2}
                 />

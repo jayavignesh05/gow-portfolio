@@ -10,7 +10,7 @@ export function Services() {
   const services = projects.slice(0, 3);
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="relative py-24 px-4 bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
         {/* Left Column: Text Content */}
         <div className="flex flex-col justify-center">
@@ -76,10 +76,9 @@ export function Services() {
             >
               {/* Project Image */}
               <div className="w-full sm:w-48 h-48 sm:h-32 rounded-xl flex-shrink-0 overflow-hidden relative group-hover:scale-95 transition-transform duration-300">
-                <Image
-                  src={service.image}
+                <Image src={service.image}
                   alt={service.title}
-                  fill
+                  fill sizes="100vw"
                   className="object-cover"
                 />
               </div>

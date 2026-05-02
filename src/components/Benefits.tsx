@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import Image from "next/image";
+import { Star, ChevronsUpDown, Clock } from "lucide-react";
 
 export default function Benefits() {
   // Parent Card Entrance Animation
@@ -74,7 +75,7 @@ export default function Benefits() {
   const hourDeg = ((hours + minutes / 60) / 12) * 360;
 
   return (
-    <section className="py-12 md:py-24 px-4 md:px-6 bg-white overflow-hidden">
+    <section className="relative py-12 md:py-24 px-4 md:px-6 bg-white overflow-hidden">
       <div className="max-w-[1200px] mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-24 flex flex-col items-center">
@@ -198,19 +199,7 @@ export default function Benefits() {
                 className="absolute inset-y-0 left-1/2 w-[2px] bg-white/30 z-10 origin-top"
               >
                 <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <svg
-                    className="w-4 h-4 text-black"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2.5}
-                      d="M8 9l4-4 4 4m0 6l-4 4-4-4"
-                    />
-                  </svg>
+                  <ChevronsUpDown className="w-4 h-4 text-black" />
                 </div>
               </motion.div>
 
@@ -235,10 +224,9 @@ export default function Benefits() {
                   style={{ x: handLeftX }}
                   className="relative w-32 h-32 md:w-48 md:h-48"
                 >
-                  <Image
-                    src="/images/leftside.png"
+                  <Image src="/images/leftside.png"
                     alt="Client Left"
-                    fill
+                    fill sizes="100vw"
                     className="object-contain "
                   />
                 </motion.div>
@@ -246,10 +234,9 @@ export default function Benefits() {
                   style={{ x: handRightX }}
                   className="relative w-32 h-32 md:w-48 md:h-48"
                 >
-                  <Image
-                    src="/images/rightside.png"
+                  <Image src="/images/rightside.png"
                     alt="Client Right"
-                    fill
+                    fill sizes="100vw"
                     className="object-contain"
                   />
                 </motion.div>
@@ -290,13 +277,10 @@ export default function Benefits() {
                 <div>
                   <div className="flex gap-1 mb-2">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <svg
+                      <Star
                         key={i}
                         className="w-4 h-4 md:w-6 md:h-6 text-[#EC5A29] fill-current"
-                        viewBox="0 0 40 40"
-                      >
-                        <path d="M 18.097 2.289 C 18.693 0.441 21.307 0.441 21.903 2.289 L 25.136 12.312 C 25.403 13.14 26.174 13.7 27.044 13.698 L 37.575 13.675 C 39.517 13.671 40.325 16.158 38.751 17.296 L 30.218 23.467 C 29.513 23.977 29.219 24.884 29.489 25.71 L 32.765 35.719 C 33.37 37.565 31.254 39.101 29.686 37.957 L 21.179 31.748 C 20.477 31.235 19.523 31.235 18.821 31.748 L 10.314 37.957 C 8.746 39.101 6.63 37.565 7.235 35.719 L 10.511 25.71 C 10.781 24.884 10.487 23.977 9.782 23.467 L 1.249 17.296 C -0.325 16.158 0.483 13.671 2.425 13.675 L 12.956 13.698 C 13.826 13.7 14.597 13.14 14.864 12.312 Z" />
-                      </svg>
+                      />
                     ))}
                   </div>
                   <div className="flex items-baseline gap-3 mt-4">
@@ -332,13 +316,7 @@ export default function Benefits() {
             >
               <div className="flex flex-col gap-4 self-start md:self-auto">
                 <div className="w-6 h-6 md:w-8 md:h-8 opacity-90 text-black">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 256 256"
-                    fill="currentColor"
-                  >
-                    <path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm88-24a8,8,0,0,0-8,8V82c-6.35-7.36-12.83-14.45-20.12-21.83a96,96,0,1,0-2,137.7,8,8,0,0,0-11-11.64A80,80,0,1,1,184.54,71.4C192.68,79.64,199.81,87.58,207,96H184a8,8,0,0,0,0,16h40a8,8,0,0,0,8-8V64A8,8,0,0,0,224,56Z"></path>
-                  </svg>
+                  <Clock size={32} />
                 </div>
                 <h3 className="text-2xl md:text-4xl font-medium text-black leading-[1.1] tracking-tight">
                   7 day <br /> turnaround

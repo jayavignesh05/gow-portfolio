@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { projects } from "@/data/projects";
+import { Plus } from "lucide-react";
 
 export function Portfolio() {
   return (
@@ -96,10 +97,9 @@ const Card = ({ title, date, category, image }: CardProps) => {
     <div className="group relative h-[300px] flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md md:h-[500px] mx-auto">
       {/* Image Container */}
       <div className="relative h-[80%]  overflow-hidden rounded-xl bg-neutral-100">
-        <Image
-          src={image}
+        <Image src={image}
           alt={title}
-          fill
+          fill sizes="100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
@@ -109,19 +109,7 @@ const Card = ({ title, date, category, image }: CardProps) => {
         {/* Center Plus Button */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/30 backdrop-blur-md transition-transform duration-500 group-hover:scale-110">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-8 w-8 text-white"
-            >
-              <line x1="12" y1="5" x2="12" y2="19" />
-              <line x1="5" y1="12" x2="19" y2="12" />
-            </svg>
+            <Plus className="h-8 w-8 text-white" />
           </div>
         </div>
 

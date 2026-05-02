@@ -19,7 +19,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   return (
-    <main className="min-h-screen w-full bg-white text-black">
+    <main className="relative min-h-screen w-full bg-white text-black">
       <AnimatePresence mode="wait">
         {loading && <IntroLoader onComplete={() => setLoading(false)} />}
       </AnimatePresence>

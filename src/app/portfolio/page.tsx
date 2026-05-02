@@ -2,6 +2,7 @@
 
 import { projects } from "@/data/projects";
 import Image from "next/image";
+import { Plus } from "lucide-react";
 import Link from "next/link";
 import { FloatingNav } from "@/components/FloatingNav";
 import { Header } from "@/components/Header";
@@ -87,26 +88,17 @@ export default function PortfolioPage() {
               <div className="bg-white rounded-[40px] p-4 md:p-6 shadow-sm hover:shadow-xl transition-all duration-500 border border-neutral-100">
                 {/* Image Container */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[32px] bg-neutral-100 mb-6">
-                  <Image
-                    src={project.image}
+                  <Image src={project.image}
                     alt={project.title}
-                    fill
+                    fill sizes="100vw"
+                    priority={project.id === "Shore-Meets-the-Soul"}
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
                   {/* Overlay: Plus Icon & Brackets */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/20">
                     <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white border border-white/30 transform scale-90 group-hover:scale-100 transition-transform duration-500">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M12 5v14M5 12h14" />
-                      </svg>
+                      <Plus className="w-8 h-8" />
                     </div>
                   </div>
 

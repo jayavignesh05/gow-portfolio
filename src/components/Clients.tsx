@@ -43,10 +43,9 @@ export function Clients() {
                 key={person.id}
                 className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white shadow-sm"
               >
-                <Image
-                  src={person.image}
+                <Image src={person.image}
                   alt={person.name}
-                  fill
+                  fill sizes="48px"
                   className="object-cover"
                 />
               </div>
@@ -64,10 +63,9 @@ export function Clients() {
           <div className="relative flex items-center justify-center w-full max-w-4xl px-4 md:px-0">
             {/* Left Wreath Image */}
             <div className="hidden md:block absolute -left-16 -top-12 w-32 h-64 opacity-20 pointer-events-none">
-              <Image
-                src="/images/leftleaf.avif"
+              <Image src="/images/leftleaf.avif"
                 alt="Left Laurel Leaf"
-                fill
+                fill sizes="128px"
                 className="object-contain"
               />
             </div>
@@ -85,10 +83,9 @@ export function Clients() {
 
             {/* Right Wreath Image */}
             <div className="hidden md:block absolute -right-16 -top-12 w-32 h-64 opacity-20 pointer-events-none">
-              <Image
-                src="/images/rightleaf.png"
+              <Image src="/images/rightleaf.png"
                 alt="Right Laurel Leaf"
-                fill
+                fill sizes="128px"
                 className="object-contain"
               />
             </div>

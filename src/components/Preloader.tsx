@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
+import { Camera } from "lucide-react";
 
 interface PreloaderProps {
     finishLoading: () => void;
@@ -46,14 +47,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ finishLoading }) => {
             >
                 {/* Center Logo */}
                 <div className="relative z-20 flex h-24 w-24 items-center justify-center">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="h-16 w-16 text-black"
-                    >
-                        <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19H4.5L12 5.5z" />
-                    </svg>
+                    <Camera className="h-16 w-16 text-black" />
                 </div>
 
                 {/* Polaroids */}

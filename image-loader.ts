@@ -9,9 +9,12 @@ export default function myImageLoader({
   width: number;
   quality?: number;
 }) {
-  if (src.startsWith("https://images.unsplash.com")) return src;
+  if (src.startsWith("https://images.unsplash.com")) {
+    const separator = src.includes("?") ? "&" : "?";
+    return `${src}${separator}w=${width}&q=${quality || 75}`;
+  }
 
-  // In development, just return the src (unoptimized)
+  // In development, Next.js will use unoptimized mode as configured in next.config.ts
   if (process.env.NODE_ENV === "development") {
     return src;
   }
