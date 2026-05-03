@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/data/projects";
+import localFont from "next/font/local";
+
+const funBlobFont = localFont({
+  src: "../data/FunBlob.ttf",
+  display: "swap",
+});
 
 export function Services() {
   // Use first 3 projects from projects.ts
@@ -23,7 +29,7 @@ export function Services() {
             <span className="inline-block px-4 py-1.5 bg-gray-100 text-gray-800 text-sm font-medium rounded-full mb-6">
               Services
             </span>
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className={`text-5xl md:text-6xl ${funBlobFont.className} text-[#8B4513] mb-6 leading-tight`}>
               How can I help?
             </h2>
             <p className="text-lg text-gray-600 mb-8 max-w-lg">
@@ -33,14 +39,14 @@ export function Services() {
             </p>
 
             <div className="mb-8">
-              <p className="font-semibold text-gray-900 mb-4">
+              <p className="font-semibold text-[#8B4513] mb-4">
                 All services include:
               </p>
               <ul className="space-y-3">
                 {[
                   "Professional Editing",
                   "Edited & Unedited (RAW) Images",
-                  "Personal and Commercial Licensing",
+                  // "Personal and Commercial Licensing",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-gray-700">
                     <span className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 text-xs">

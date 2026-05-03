@@ -24,7 +24,7 @@ export default function Home() {
         {loading && <IntroLoader onComplete={() => setLoading(false)} />}
       </AnimatePresence>
       <Hero />
-      <Clients />
+      {/* <Clients /> */}
       <Philosophy />
       <Services />
       <Benefits />

@@ -40,44 +40,30 @@ export function Footer() {
               {/* Contact Info */}
               <div className="mb-12 flex flex-wrap items-center justify-center gap-8">
                 <a
-                  href="mailto:hello@augustrenner.com"
+                  href="mailto:officialgowtham8@gmail.com"
                   className="flex items-center gap-2 text-white/90 transition-colors hover:text-white"
                 >
                   <Mail className="h-5 w-5" />
-                  <span>hello@augustrenner.com</span>
+                  <span>officialgowtham8@gmail.com</span>
                 </a>
                 <div className="h-4 w-px bg-white/30" />
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+91 9176354335"
                   className="flex items-center gap-2 text-white/90 transition-colors hover:text-white"
                 >
                   <Phone className="h-5 w-5" />
-                  <span>+1 (234) 567-890</span>
+                  <span>+91 91763 54335</span>
                 </a>
               </div>
 
               {/* Social Links */}
               <div className="mb-12 flex items-center justify-center gap-6">
                 <a
-                  href="#"
+                  href="https://www.instagram.com/cinevisionary3?igsh=MTlyZ3lqMGVpdDlt&utm_source=qr"
                   className="transition-transform hover:scale-110"
                   aria-label="Instagram"
                 >
                   <Instagram className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  className="transition-transform hover:scale-110"
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  className="transition-transform hover:scale-110"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="h-6 w-6" />
                 </a>
               </div>
             </motion.div>

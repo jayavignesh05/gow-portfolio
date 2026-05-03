@@ -3,6 +3,12 @@
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import localFont from "next/font/local";
+
+const funBlobFont = localFont({
+  src: "../data/FunBlob.ttf",
+  display: "swap",
+});
 
 export function Philosophy() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,12 +62,14 @@ export function Philosophy() {
     },
   ];
 
-  const line1 = "Every photograph should make an impact.";
-  const line2 = "I capture moments that blend artistry, storytelling,";
-  const line3 = "and emotion to create visuals that stand out.";
-
+  const line1 = "I see the world through stories";
+  const line2 = "not just frames.";
+  const highlightText = "Keep Creating";
+  const line3 = "because every moment deserves meaning.";
   const wordStyle =
     "text-[30px]  lg:text-[44px] font-semibold tracking-tight text-gray-900 leading-[1.15] inline-block mr-2";
+  const highlightStyle =
+    `text-[34px] lg:text-[48px] ${funBlobFont.className} tracking-tight text-[#8B4513] leading-[1.15] inline-block mr-2`;
 
   return (
     <section ref={containerRef} className="relative h-[350vh] bg-white w-full">
@@ -72,7 +80,7 @@ export function Philosophy() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-sm md:text-base font-medium text-gray-500 mb-2 uppercase tracking-widest"
+            className="text-sm md:text-base font-medium text-[#8B4513] mb-2 uppercase tracking-widest"
           >
             Philosophy
           </motion.p>
@@ -97,15 +105,16 @@ export function Philosophy() {
             <div className="w-full h-2 md:h-4" />
 
             {/* Line 2 & 3 - Starts a bit later */}
-            {line2.split(" ").map((word, i) => {
-              const start = 0.2 + (i / line2.split(" ").length) * 0.1;
+            {[...line2.split(" "), ...highlightText.split(" ")].map((word, i, arr) => {
+              const start = 0.2 + (i / arr.length) * 0.1;
               const end = start + 0.1;
+              const isHighlight = word === "Keep" || word === "Creating";
               return (
                 <Word
                   key={`l2-${i}`}
                   progress={scrollYProgress}
                   range={[start, end]}
-                  className={wordStyle}
+                  className={isHighlight ? highlightStyle : wordStyle}
                 >
                   {word}
                 </Word>

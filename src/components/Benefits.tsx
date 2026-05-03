@@ -126,7 +126,7 @@ export default function Benefits() {
             >
               <div className="z-20 mb-auto">
                 <h3 className="text-2xl md:text-4xl font-medium text-black leading-[1.1] tracking-tight">
-                  Over 10+ years <br /> experience
+                  Over 4 years <br /> experience
                 </h3>
               </div>
               {/* Visual: Floating Polaroids (SCROLL SCRUB ANIMATION) */}
