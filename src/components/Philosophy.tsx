@@ -13,42 +13,42 @@ export function Philosophy() {
 
   const images = [
     {
-      src: "/images/philosophy/philosophy_white_shirt_1768816370348.png",
+      src: "/images/philosophy/philosophy_white_shirt_1768816370348.jpeg",
       alt: "White shirt portrait",
       position: "left-[2%] md:left-[5%] top-[15%]",
       size: "w-28 md:w-64 lg:w-80 aspect-[3/4]",
       parallaxSpeed: 1,
     },
     {
-      src: "/images/philosophy/philosophy_blue_flowers_1768816430152.png",
+      src: "/images/philosophy/philosophy_blue_flowers_1768816430152.jpeg",
       alt: "Blue flowers portrait",
       position: "right-[2%] md:right-[10%] top-[25%]",
       size: "w-32 md:w-72 lg:w-96 aspect-[4/5]",
       parallaxSpeed: 0.8,
     },
     {
-      src: "/images/philosophy/philosophy_earrings_1768816406554.png",
+      src: "/images/philosophy/philosophy_earrings_1768816406554.jpeg",
       alt: "Gold earrings",
       position: "left-[5%] md:left-[15%] top-[40%]",
       size: "w-24 md:w-60 lg:w-72 aspect-square",
       parallaxSpeed: 1.1,
     },
     {
-      src: "/images/philosophy/philosophy_desk_scene_1768816459266.png",
+      src: "/images/philosophy/philosophy_desk_scene_1768816459266.jpeg",
       alt: "Desk with hat",
       position: "right-[5%] md:right-[20%] top-[55%]",
       size: "w-32 md:w-72 lg:w-80 aspect-[4/3]",
       parallaxSpeed: 0.9,
     },
     {
-      src: "/images/philosophy/philosophy_freckled_portrait_1768816491303.png",
+      src: "/images/philosophy/philosophy_freckled_portrait_1768816491303.jpeg",
       alt: "Freckled portrait",
       position: "left-[2%] md:left-[10%] top-[70%]",
       size: "w-36 md:w-80 lg:w-96 aspect-[3/4]",
       parallaxSpeed: 1.2,
     },
     {
-      src: "/images/philosophy/philosophy_dark_portrait_1768816518969.png",
+      src: "/images/philosophy/philosophy_dark_portrait_1768816518969.jpeg",
       alt: "Dark moody portrait",
       position: "right-[2%] md:right-[5%] top-[85%]",
       size: "w-28 md:w-64 lg:w-80 aspect-[3/4]",
