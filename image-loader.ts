@@ -14,11 +14,6 @@ export default function myImageLoader({
     return `${src}${separator}w=${width}&q=${quality || 75}`;
   }
 
-  // In development, Next.js will use unoptimized mode as configured in next.config.ts
-  if (process.env.NODE_ENV === "development") {
-    return src;
-  }
-
   // Parse the source path
   // Example: /images/intro/i1.jpg
   const lastSlashIndex = src.lastIndexOf("/");

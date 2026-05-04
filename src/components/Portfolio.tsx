@@ -1,7 +1,7 @@
 "use client";
 
 import { useScroll, useTransform, motion } from "framer-motion";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
 import { useRef } from "react";
 import { projects } from "@/data/projects";
@@ -61,7 +61,7 @@ export function Portfolio() {
           {/* Row 2 - Overlay */}
           <div className="relative z-10 bg-neutral-50">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
-              {projects.slice(2, 4).map((project, index) => (
+              {projects.slice(3, 5).map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 50 }}
@@ -97,7 +97,7 @@ const Card = ({ title, date, category, image }: CardProps) => {
     <div className="group relative h-[300px] flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md md:h-[500px] mx-auto">
       {/* Image Container */}
       <div className="relative h-[80%]  overflow-hidden rounded-xl bg-neutral-100">
-        <Image src={image}
+        <ExportedImage src={image}
           alt={title}
           fill sizes="100vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -54,16 +54,13 @@ export function Footer() {
                   <Phone className="h-5 w-5" />
                   <span>+91 91763 54335</span>
                 </a>
-              </div>
-
-              {/* Social Links */}
-              <div className="mb-12 flex items-center justify-center gap-6">
+                <div className="h-4 w-px bg-white/30" />
                 <a
                   href="https://www.instagram.com/cinevisionary3?igsh=MTlyZ3lqMGVpdDlt&utm_source=qr"
-                  className="transition-transform hover:scale-110"
-                  aria-label="Instagram"
+                  className="flex items-center gap-2 text-white/90 transition-colors hover:text-white"
                 >
-                  <Instagram className="h-6 w-6" />
+                  <Instagram className="h-5 w-5" />
+                  <span>@cinevisionary3</span>
                 </a>
               </div>
             </motion.div>

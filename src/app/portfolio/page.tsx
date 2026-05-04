@@ -1,7 +1,7 @@
 "use client";
 
 import { projects } from "@/data/projects";
-import Image from "next/image";
+import ExportedImage from "next-image-export-optimizer";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { FloatingNav } from "@/components/FloatingNav";
@@ -88,7 +88,7 @@ export default function PortfolioPage() {
               <div className="bg-white rounded-[40px] p-4 md:p-6 shadow-sm hover:shadow-xl transition-all duration-500 border border-neutral-100">
                 {/* Image Container */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[32px] bg-neutral-100 mb-6">
-                  <Image src={project.image}
+                  <ExportedImage src={project.image}
                     alt={project.title}
                     fill sizes="100vw"
                     priority={project.id === "Shore-Meets-the-Soul"}
