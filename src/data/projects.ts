@@ -1,4 +1,25 @@
-export const projects = [
+export interface Project {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  image: string;
+  images?: string[];
+  video?: string;
+  videos?: string[];
+  description: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: "Sample-Video",
+    title: "My Video Project",
+    category: "Videography",
+    date: "2026",
+    image: "", // Not used since video is present
+    video: "/videos/video1.mp4",
+    description: "A showcase of my recent video work.",
+  },
   {
     id: "Shore-Meets-the-Soul",
     title: "Shore Meets the Soul",

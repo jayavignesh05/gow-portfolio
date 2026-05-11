@@ -42,14 +42,25 @@ export default async function ProjectPage({
       <Header theme="light" />
       {/* Hero Header Section with Background Image */}
       <section className="relative h-[85vh] min-h-[600px] w-full overflow-hidden flex flex-col justify-end pb-12 md:pb-24 px-6 md:px-12 text-white">
-        {/* Background Image */}
+        {/* Background Image / Video */}
         <div className="absolute inset-0 z-0 select-none">
-          <ExportedImage src={project.image}
-            alt={project.title}
-            fill sizes="100vw"
-            className="object-cover"
-            priority
-          />
+          {project.video ? (
+            <video 
+              src={project.video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover w-full h-full"
+            />
+          ) : (
+            <ExportedImage src={project.image}
+              alt={project.title}
+              fill sizes="100vw"
+              className="object-cover"
+              priority
+            />
+          )}
           {/* Gradient Overlays */}
           <div className="absolute inset-0 bg-black/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -85,10 +96,28 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      {/* Image Grid Section */}
+      {/* Image & Video Grid Section */}
       <section className="py-24 px-4 md:px-8 bg-neutral-50">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+            {/* Render Videos First (If Any) */}
+            {project.videos?.map((vid, index) => (
+              <div
+                key={`vid-${index}`}
+                className="relative rounded-3xl overflow-hidden shadow-sm md:col-span-2"
+              >
+                <video 
+                  src={vid}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  className="object-cover w-full max-h-[80vh]"
+                />
+              </div>
+            ))}
+            {/* Render Images */}
             {project.images?.map((img, index) => (
               <div
                 key={index}

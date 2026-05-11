@@ -3,11 +3,19 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import ExportedImage from "next-image-export-optimizer";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { projects } from "@/data/projects";
 import { Plus } from "lucide-react";
 
 export function Portfolio() {
+  const [activeTab, setActiveTab] = useState<"All" | "Photos" | "Videos">("All");
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeTab === "Photos") return !project.video;
+    if (activeTab === "Videos") return !!project.video;
+    return true;
+  });
+
   return (
     <section className="py-24 bg-neutral-50 relative">
       <div className="container mx-auto px-4 md:px-8">
@@ -34,12 +42,29 @@ export function Portfolio() {
           </p>
         </div>
 
+        {/* Tabs Selection */}
+        <div className="flex justify-center gap-4 mb-12">
+          {["All", "Photos", "Videos"].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab as any)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                activeTab === tab
+                  ? "bg-neutral-900 text-white"
+                  : "bg-white text-neutral-600 hover:bg-neutral-100 shadow-sm"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
         {/* Standard Grid Layout */}
         <div className="relative">
           {/* Row 1 - Sticky */}
           <div className="relative md:sticky top-0 md:top-20 z-0 mb-12 md:mb-0">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
-              {projects.slice(0, 2).map((project, index) => (
+              {filteredProjects.slice(0, 2).map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 50 }}
@@ -59,9 +84,9 @@ export function Portfolio() {
           </div>
 
           {/* Row 2 - Overlay */}
-          <div className="relative z-10 bg-neutral-50">
+          <div className="relative z-10 bg-neutral-50 pt-12 md:pt-24">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5 lg:gap-5 px-4 md:px-12 mx-0 md:mx-12">
-              {projects.slice(3, 5).map((project, index) => (
+              {filteredProjects.slice(2).map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 50 }}
@@ -90,18 +115,30 @@ interface CardProps {
   date: string;
   category: string;
   image: string;
+  video?: string;
 }
 
-const Card = ({ title, date, category, image }: CardProps) => {
+const Card = ({ title, date, category, image, video }: CardProps) => {
   return (
     <div className="group relative h-[300px] flex-col overflow-hidden rounded-2xl bg-white p-4 shadow-sm transition-shadow hover:shadow-md md:h-[500px] mx-auto">
-      {/* Image Container */}
+      {/* Image / Video Container */}
       <div className="relative h-[80%]  overflow-hidden rounded-xl bg-neutral-100">
-        <ExportedImage src={image}
-          alt={title}
-          fill sizes="100vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-        />
+        {video ? (
+          <video 
+            src={video}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <ExportedImage src={image}
+            alt={title}
+            fill sizes="100vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+        )}
 
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/20" />
