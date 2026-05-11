@@ -80,13 +80,25 @@ export function Services() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="flex flex-col sm:flex-row gap-6 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 group "
             >
-              {/* Project Image */}
+              {/* Project Image / Video */}
               <div className="w-full sm:w-48 h-48 sm:h-32 rounded-xl flex-shrink-0 overflow-hidden relative group-hover:scale-95 transition-transform duration-300">
-                <Image src={service.image}
-                  alt={service.title}
-                  fill sizes="100vw"
-                  className="object-cover"
-                />
+                {service.video ? (
+                  <video
+                    src={service.video}
+                    poster={service.image || undefined}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="object-cover w-full h-full"
+                  />
+                ) : (
+                  <Image src={service.image}
+                    alt={service.title}
+                    fill sizes="100vw"
+                    className="object-cover"
+                  />
+                )}
               </div>
 
               <div className="flex flex-col justify-center py-2">

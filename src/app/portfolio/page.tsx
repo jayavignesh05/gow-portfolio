@@ -176,6 +176,7 @@ export default function PortfolioPage() {
                 <div className="relative aspect-[4/3] w-full bg-neutral-900 overflow-hidden">
                   <video 
                     src={project.video}
+                    poster={project.image || undefined}
                     autoPlay
                     loop
                     muted

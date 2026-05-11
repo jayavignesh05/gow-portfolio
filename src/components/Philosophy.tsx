@@ -54,8 +54,8 @@ export function Philosophy() {
       parallaxSpeed: 1.2,
     },
     {
-      src: "/images/philosophy/philosophy_dark_portrait_1768816518969.jpeg",
-      alt: "Dark moody portrait",
+      src: "/videos/video1.mp4",
+      alt: "Dark moody portrait video",
       position: "right-[2%] md:right-[5%] top-[85%]",
       size: "w-28 md:w-64 lg:w-80 aspect-[3/4]",
       parallaxSpeed: 1,
@@ -210,18 +210,31 @@ function ParallaxImage({
     [0, 0, 1],
   );
 
+  const isVideo = src.match(/\.(mp4|webm|ogg)$/i);
+
   return (
     <motion.div
       style={{ y, opacity }}
       className={`absolute ${position} ${size} rounded-2xl overflow-hidden shadow-2xl`}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
-      />
+      {isVideo ? (
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+      )}
     </motion.div>
   );
 }
